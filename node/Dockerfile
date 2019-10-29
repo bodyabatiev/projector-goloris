@@ -5,7 +5,6 @@ RUN npm install -g nodemon
 
 ADD . /src/
 WORKDIR /src/
-RUN npm install
 
 ARG RUNBY=node
 ENV RUNBY ${RUNBY}
