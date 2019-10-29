@@ -1,0 +1,18 @@
+version: "3.6"
+services:
+  nginx_host:
+    image: nginx:latest
+    container_name: nginx_host
+    ports:
+      - "82:82"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
+  node:
+    build: "./node"
+    environment:
+      - port=82
+      - url=http://nginx_host
+      - connections=1000
+    depends_on:
+      - nginx_host
